@@ -1,0 +1,46 @@
+import React from 'react';
+import Axios from 'axios';
+
+class FormBox extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      fields: { }
+    }
+  }
+
+  render() {
+    return(
+      <div className="well">
+        <form onSubmit={this._handleSubmit.bind(this)}>
+          <div class="input-group">
+            <select class="form-control" ref={(input) => this._quantity = input} />
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Filter</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    )
+  }
+  _handleSubmit(event) {
+      event.preventDefault();
+      this.props.onUpdate(this._quantity.value, this.props.game);
+      this._quantity.value = ''
+  }
+
+  _getRace() {
+    Axios.get('https://tubmanproject-api.mintyross.com/v1/fields/defendant_race')
+    .then((response) => {
+      this.setState(race: response.data );
+    });
+  }
+
+  componentDidMount() {
+    this._getRace();
+  }
+
+}
+
+export default FormBox;
