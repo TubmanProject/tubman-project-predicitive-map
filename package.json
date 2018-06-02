@@ -9,7 +9,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
     "react-mapbox-gl": "^3.8.0",
-    "react-scripts": "1.1.4"
+    "react-scripts": "^1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
