@@ -27,28 +27,35 @@ class MapBox extends React.Component {
   componentDidMount() {
     const { lng, lat, zoom } = this.state;
 
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
       center: [lng, lat],
       zoom
     });
 
-    map.on('move', () => {
-      const { lng, lat } = map.getCenter();
+    this.map.on('move', () => {
+      const { lng, lat } = this.map.getCenter();
 
       this.setState({
         lng: lng.toFixed(4),
         lat: lat.toFixed(4),
-        zoom: map.getZoom().toFixed(2)
+        zoom: this.map.getZoom().toFixed(2)
       });
     });
-    console.log(this.props.markers);
-    if (this.props.markers) { this._addMarkers(this.props.markers, map); }
+    //console.log(this.props.markers);
+    //if (this.props.markers.length > 0) { this._addMarkers(this.props.markers, this.map); }
+  }
+
+  componentDidUpdate() {
+    //console.log(this.props.markers);
+    if (this.props.markers.length > 0) { this._addMarkers(this.props.markers, this.map); }
   }
 
   _addMarkers(markers, map) {
+    console.log(markers);
     markers.forEach(function(marker) {
+      console.log(marker);
 
       // create a HTML element for each feature
       var el = document.createElement('div');
