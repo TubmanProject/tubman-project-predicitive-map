@@ -53,9 +53,9 @@ class MapBox extends React.Component {
   }
 
   _addMarkers(markers, map) {
-    console.log(markers);
+    //console.log(markers);
     markers.forEach(function(marker) {
-      console.log(marker);
+      //console.log(marker);
 
       // create a HTML element for each feature
       var el = document.createElement('div');

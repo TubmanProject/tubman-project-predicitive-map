@@ -3,35 +3,14 @@ import Axios from 'axios';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class FormBox extends React.Component {
-  // constructor() {
-  //   super();
-
-  //   this.state = {
-  //     fields: { }
-  //   }
-  // }
-
-  // render() {
-  //   return(
-  //     <div className="well">
-  //       <form onSubmit={this._handleSubmit.bind(this)}>
-  //         <div class="input-group">
-  //           <select class="form-control" ref={(input) => this._quantity = input} />
-  //           <span class="input-group-btn">
-  //             <button class="btn btn-default" type="submit">Filter</button>
-  //           </span>
-  //         </div>
-  //       </form>
-  //     </div>
-  //   )
-  // }
-
-constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.toggle = this.toggle.bind(this);
+    this.select = this.select.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      sex: ''
     };
   }
 
@@ -41,16 +20,26 @@ constructor(props) {
     }));
   }
 
+  select(event) {
+    event.preventDefault();
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+      sex: event.target.value
+    });
+    this.props.querySex.bind(event.target.value);
+    console.log(this.state.sex);
+  }
+
   render() {
     return (
       <div>
-        <Dropdown className="formbox" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <Dropdown className="formbox" isOpen={this.state.dropdownOpen} toggle={this.toggle} >
           <DropdownToggle caret>
             Sex
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem>Male</DropdownItem>
-            <DropdownItem>Female</DropdownItem>
+            <DropdownItem onClick={this.select} value="male">Male</DropdownItem>
+            <DropdownItem onClick={this.select} value="female">Female</DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </div>

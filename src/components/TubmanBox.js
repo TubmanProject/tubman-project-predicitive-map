@@ -24,7 +24,8 @@ class TubmanBox extends React.Component {
     return(
       <div className="row well">
         <div className="well">
-          <FormBox />
+          <FormBox querySex={this._getBexarData.bind(this)}
+          sex={'male'}/>
           {this._renderMap(markers)};
         </div>
       </div>
@@ -44,9 +45,14 @@ class TubmanBox extends React.Component {
   }
 
 
-  _getBexarData() {
+  _getBexarData(querySex) {
+    /*if (querySex) {
+      var sex = "{%22SEX%22:%22M%22}"
+    }*/
+    //console.log('_getBexarData');
+    console.log(querySex);
 
-    Axios.get('https://api.mlab.com/api/1/databases/tubman/collections/tubman?apiKey=1mGO9l6rrwCLB0T2WNKMOQnEd-5cL7af&sk=0&l=100')
+    Axios.get("https://api.mlab.com/api/1/databases/tubman/collections/tubman?apiKey=1mGO9l6rrwCLB0T2WNKMOQnEd-5cL7af&sk=0&l=100&q={%22SEX%22:%22M%22}")
     .then((response) => {
       const addresses = response.data;
       //console.log(response.data);
