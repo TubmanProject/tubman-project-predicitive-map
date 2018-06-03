@@ -11,3 +11,11 @@ body {
   border-radius: 50%;
   cursor: pointer;
 }
+
+.mapboxgl-missing-css {
+	display: none;
+}
+
+.formbox {
+	z-index: 999;
+}
