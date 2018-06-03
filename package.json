@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv-keywords": "^3.2.0",
     "axios": "^0.18.0",
     "mapbox-gl": "^0.45.0",
+    "mapbox-gl-leaflet": "0.0.3",
+    "mapbox.js": "^3.1.1",
     "react": "^16.4.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
+    "react-geocode": "0.0.9",
     "react-mapbox-gl": "^3.8.0",
     "react-scripts": "^1.1.4"
   },

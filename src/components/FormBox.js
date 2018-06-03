@@ -33,12 +33,12 @@ class FormBox extends React.Component {
   _getRace() {
     Axios.get('https://tubmanproject-api.mintyross.com/v1/fields/defendant_race')
     .then((response) => {
-      this.setState(race: response.data );
+      //this.setState(race: response.data );
     });
   }
 
   componentDidMount() {
-    this._getRace();
+    //this._getRace();
   }
 
 }

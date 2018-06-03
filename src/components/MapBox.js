@@ -8,9 +8,9 @@ class MapBox extends React.Component {
     super();
 
     this.state = {
-          lng: 5,
-          lat: 34,
-          zoom: 1.5
+          lng: -98.3504,
+          lat: 29.4034,
+          zoom: 9
         };
   }
 
@@ -43,6 +43,22 @@ class MapBox extends React.Component {
         zoom: map.getZoom().toFixed(2)
       });
     });
+    console.log(this.props.markers);
+    if (this.props.markers) { this._addMarkers(this.props.markers, map); }
+  }
+
+  _addMarkers(markers, map) {
+    markers.forEach(function(marker) {
+
+      // create a HTML element for each feature
+      var el = document.createElement('div');
+      el.className = 'marker';
+
+      // make a marker for each feature and add to the map
+      new mapboxgl.Marker(el)
+        .setLngLat(marker)
+        .addTo(map);
+      });
   }
 }
 
